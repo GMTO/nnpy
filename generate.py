@@ -88,10 +88,10 @@ def create_module():
             parsed_cfg = parser.defaults()
             for param in ['include_dirs', 'library_dirs']:
                 if param in parsed_cfg:
-                    set_source_args[param] = parsed_cfg[param].split(',')
+                    set_source_args[param] = [os.path.expandvars(p) for p in parsed_cfg[param].split(',')]
 
             if 'host_library' in parsed_cfg:
-                host_library = parsed_cfg['host_library']
+                host_library = os.path.expandvars(parsed_cfg['host_library'])
 
     # Add some more directories from the environment
 
