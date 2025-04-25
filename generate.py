@@ -8,7 +8,7 @@ except ImportError:
     # try py3 import
     import configparser as cfgparser
 
-SITE_CFG = "site_{sys.platform}.cfg"
+SITE_CFG = f"site_{sys.platform}.cfg"
 
 GMT_GLOBAL = os.environ.get("GMT_GLOBAL")
 
