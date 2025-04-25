@@ -1,5 +1,6 @@
 from cffi import FFI
 import os
+import sys
 
 try:
     import ConfigParser as cfgparser
@@ -7,9 +8,11 @@ except ImportError:
     # try py3 import
     import configparser as cfgparser
 
-SITE_CFG = 'site.cfg'
+SITE_CFG = "site_{sys.platform}.cfg"
 
-DEFAULT_INCLUDE_DIRS = ['/usr/include/nanomsg', '/usr/local/include/nanomsg']
+GMT_GLOBAL = os.environ.get("GMT_GLOBAL")
+
+DEFAULT_INCLUDE_DIRS = [f"{GMT_GLOBAL}/ext/include/nanomsg"]
 DEFAULT_HOST_LIBRARY = 'nanomsg'
 
 BLOCKS = {'{': '}', '(': ')'}
